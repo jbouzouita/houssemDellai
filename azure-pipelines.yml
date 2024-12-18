@@ -19,12 +19,14 @@ stages:
   - job: BuildBackendApp
     displayName: Build Backend App
     steps:
+    dependsOn: []
     - script: echo building backend app
       displayName: build backend app
     - script: echo running unit tests for backend app
       displayName: unit tests backend
 
 - stage: DeployDev
+  dependsOn: []
   displayName: Deploy to DEV environment
   jobs:
   - job: DeployFrontendDev
@@ -34,12 +36,14 @@ stages:
       displayName: deploy frontend app to DEV
 
   - job: DeployBackendDev
+    dependsOn: []
     displayName: Deploy backend to DEV
     steps:
     - script: echo deploying backend app to DEV
       displayName: deploy backend app to DEV
 
 - stage: DeployProd
+  dependsOn: []
   displayName: Deploy to PROD environment
   pool:
     vmImage: 'macOS-10.14'
